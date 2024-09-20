@@ -1,0 +1,1404 @@
+behaviors:
+  AIRobotGeneric:
+    trainer_type: ppo
+    hyperparameters:
+      batch_size: 128
+      buffer_size: 2048
+      learning_rate: 0.0003
+      learning_rate_schedule: linear
+    network_settings:
+      normalize: false
+      hidden_units: 256
+      num_layers: 3
+      vis_encode_type: simple
+      memory: null
+    reward_signals:
+      extrinsic:
+        gamma: 0.99
+        strength: 1.0
+    init_path: null
+    keep_checkpoints: 5
+    checkpoint_interval: 500000
+    max_steps: 15000000
+    time_horizon: 64
+    summary_freq: 60000
+    threaded: true
+    self_play:
+      save_steps: 20000
+      team_change: 100000
+      swap_steps: 10000
+      window: 10
+      play_against_latest_model_ratio: 0.5
+      initial_elo: 1200.0
+    behavioral_cloning: null
+env_settings:
+  env_path: null
+  env_args: null
+  base_port: 5005
+  num_envs: 1
+  seed: -1
+engine_settings:
+  width: 84
+  height: 84
+  quality_level: 5
+  time_scale: 20
+  target_frame_rate: -1
+  capture_frame_rate: 60
+  no_graphics: false
+environment_parameters:
+  max_steps:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5842
+          value: 2500
+      name: LessonPushBlock
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5843
+          value: 2500
+      name: LessonPushBlockTwoGoals
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5844
+          value: 2500
+      name: LessonPushBlockTwoGoalsWithBall
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5845
+          value: 2500
+      name: Lesson0
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5846
+          value: 2300
+      name: Lesson1
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 5.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5847
+          value: 2000
+      name: Lesson2
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 6.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5848
+          value: 2000
+      name: Lesson3
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5849
+          value: 2000
+      name: Lesson4
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5850
+          value: 2000
+      name: Lesson5
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5851
+          value: 2000
+      name: Lesson6
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5852
+          value: 2000
+      name: Lesson7
+      completion_criteria: null
+  max_arenas:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5853
+          value: 64
+      name: LessonPushBlock
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5854
+          value: 64
+      name: LessonPushBlockTwoGoals
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5855
+          value: 16
+      name: Lesson0
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5856
+          value: 16
+      name: Lesson1
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 5.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5857
+          value: 16
+      name: Lesson2
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 6.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5858
+          value: 16
+      name: Lesson3
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5859
+          value: 16
+      name: Lesson4
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5860
+          value: 16
+      name: Lesson5
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5861
+          value: 16
+      name: Lesson6
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5862
+          value: 16
+      name: Lesson7
+      completion_criteria: null
+  ball_shape:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5863
+          value: 0
+      name: LessonPushBlock
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5864
+          value: 0
+      name: LessonPushBlockTwoGoals
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5865
+          value: 1
+      name: LessonPushBlockTwoGoalsWithBall
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5866
+          value: 1
+      name: Lesson0
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5867
+          value: 1
+      name: Lesson1
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 5.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5868
+          value: 1
+      name: Lesson2
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 6.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5869
+          value: 1
+      name: Lesson3
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5870
+          value: 1
+      name: Lesson4
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5871
+          value: 1
+      name: Lesson5
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5872
+          value: 1
+      name: Lesson6
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5873
+          value: 1
+      name: Lesson7
+      completion_criteria: null
+  level:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5874
+          value: 4
+      name: LessonPushBlock
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5875
+          value: 3
+      name: LessonPushBlockTwoGoals
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5876
+          value: 3
+      name: LessonPushBlockTwoGoals
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5877
+          value: 3
+      name: Lesson0
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5878
+          value: 3
+      name: Lesson1
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 5.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5879
+          value: 2
+      name: Lesson2
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 6.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5880
+          value: 2
+      name: Lesson3
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5881
+          value: 2
+      name: Lesson4
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5882
+          value: 1
+      name: Lesson5
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5883
+          value: 1
+      name: Lesson6
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5884
+          value: 1
+      name: Lesson7
+      completion_criteria: null
+  spawn_area_margin:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5885
+          value: 0.5
+      name: LessonPushBlock
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5886
+          value: 0.5
+      name: LessonPushBlockTwoGoals
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5887
+          value: 0.5
+      name: Lesson0
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5888
+          value: 0.7
+      name: Lesson1
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 5.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5889
+          value: 0.8
+      name: Lesson2
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 6.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5890
+          value: 0.85
+      name: Lesson3
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5891
+          value: 0.9
+      name: Lesson4
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5892
+          value: 0.99
+      name: Lesson5
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5893
+          value: 0.99
+      name: Lesson6
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5894
+          value: 0.99
+      name: Lesson7
+      completion_criteria: null
+  random_obs_dist:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5895
+          value: 0.0
+      name: Lesson0
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5896
+          value: 0.01
+      name: Lesson1
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 5.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5897
+          value: 0.01
+      name: Lesson2
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 6.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5898
+          value: 0.01
+      name: Lesson3
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5899
+          value: 0.02
+      name: Lesson4
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5900
+          value: 0.02
+      name: Lesson5
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5901
+          value: 0.02
+      name: Lesson6
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5902
+          value: 0.02
+      name: Lesson7
+      completion_criteria: null
+  random_obs_angle:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5903
+          value: 0
+      name: Lesson0
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5904
+          value: 1
+      name: Lesson1
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 5.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5905
+          value: 2
+      name: Lesson2
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 6.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5906
+          value: 2
+      name: Lesson3
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5907
+          value: 2
+      name: Lesson4
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5908
+          value: 2
+      name: Lesson5
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5909
+          value: 2
+      name: Lesson6
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5910
+          value: 2
+      name: Lesson7
+      completion_criteria: null
+  number_of_blue_agents:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5911
+          value: 1
+      name: Lesson0
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5912
+          value: 1
+      name: Lesson1
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 5.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5913
+          value: 2
+      name: Lesson2
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 6.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5914
+          value: 2
+      name: Lesson3
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5915
+          value: 2
+      name: Lesson4
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5916
+          value: 2
+      name: Lesson5
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5917
+          value: 2
+      name: Lesson6
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5918
+          value: 2
+      name: Lesson7
+      completion_criteria: null
+  number_of_red_agents:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5919
+          value: 0
+      name: LessonPushBlock
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5920
+          value: 0
+      name: LessonPushBlockTwoGoals
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5921
+          value: 0
+      name: LessonPushBlockTwoGoalsWithBall
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5922
+          value: 1
+      name: Lesson0
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5923
+          value: 1
+      name: Lesson1
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 5.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5924
+          value: 2
+      name: Lesson2
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 6.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5925
+          value: 2
+      name: Lesson3
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5926
+          value: 2
+      name: Lesson4
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5927
+          value: 2
+      name: Lesson5
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5928
+          value: 2
+      name: Lesson6
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5929
+          value: 2
+      name: Lesson7
+      completion_criteria: null
+  number_of_positive_energy_cores:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5930
+          value: 1
+      name: Lesson0
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5931
+          value: 1
+      name: Lesson1
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 5.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5932
+          value: 2
+      name: Lesson2
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 6.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5933
+          value: 2
+      name: Lesson3
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5934
+          value: 3
+      name: Lesson4
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5935
+          value: 3
+      name: Lesson5
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5936
+          value: 4
+      name: Lesson6
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5937
+          value: 5
+      name: Lesson7
+      completion_criteria: null
+  number_of_negative_energy_cores:
+    curriculum:
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5938
+          value: 0
+      name: LessonPushBlock
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5939
+          value: 1
+      name: LessonPushBlockTwoGoals
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5940
+          value: 1
+      name: LessonPushBlockTwoGoalsWithBall
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5941
+          value: 1
+      name: Lesson0
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 3.5
+        require_reset: true
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5942
+          value: 1
+      name: Lesson1
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 5.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5943
+          value: 2
+      name: Lesson2
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 6.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5944
+          value: 2
+      name: Lesson3
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 7.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5945
+          value: 3
+      name: Lesson4
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5946
+          value: 3
+      name: Lesson5
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 8.5
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5947
+          value: 4
+      name: Lesson6
+      completion_criteria:
+        measure: reward
+        behavior: AIRobotGeneric
+        min_lesson_length: 100
+        signal_smoothing: true
+        threshold: 9.0
+        require_reset: false
+    - value:
+        sampler_type: constant
+        sampler_parameters:
+          seed: 5948
+          value: 5
+      name: Lesson7
+      completion_criteria: null
+checkpoint_settings:
+  run_id: run1
+  initialize_from: null
+  load_model: false
+  resume: false
+  force: false
+  train_model: false
+  inference: false
+debug: false

@@ -1,0 +1,6 @@
+model_checkpoint_path: "AIRobotGeneric-15000007.ckpt"
+all_model_checkpoint_paths: "AIRobotGeneric-13499981.ckpt"
+all_model_checkpoint_paths: "AIRobotGeneric-13999979.ckpt"
+all_model_checkpoint_paths: "AIRobotGeneric-14499971.ckpt"
+all_model_checkpoint_paths: "AIRobotGeneric-14999999.ckpt"
+all_model_checkpoint_paths: "AIRobotGeneric-15000007.ckpt"

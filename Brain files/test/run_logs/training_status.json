@@ -1,0 +1,80 @@
+{
+    "max_steps": {
+        "lesson_num": 5
+    },
+    "max_arenas": {
+        "lesson_num": 9
+    },
+    "ball_shape": {
+        "lesson_num": 5
+    },
+    "level": {
+        "lesson_num": 10
+    },
+    "spawn_area_margin": {
+        "lesson_num": 9
+    },
+    "random_obs_dist": {
+        "lesson_num": 7
+    },
+    "random_obs_angle": {
+        "lesson_num": 7
+    },
+    "number_of_blue_agents": {
+        "lesson_num": 7
+    },
+    "number_of_red_agents": {
+        "lesson_num": 5
+    },
+    "number_of_positive_energy_cores": {
+        "lesson_num": 7
+    },
+    "number_of_negative_energy_cores": {
+        "lesson_num": 5
+    },
+    "AIRobotGeneric": {
+        "checkpoints": [
+            {
+                "steps": 2999967,
+                "file_path": "results/test/AIRobotGeneric/AIRobotGeneric-2999967.nn",
+                "reward": 0.6967114364462239,
+                "creation_time": 1726745021.8643332
+            },
+            {
+                "steps": 3499979,
+                "file_path": "results/test/AIRobotGeneric/AIRobotGeneric-3499979.nn",
+                "reward": null,
+                "creation_time": 1726746098.4417849
+            },
+            {
+                "steps": 3999945,
+                "file_path": "results/test/AIRobotGeneric/AIRobotGeneric-3999945.nn",
+                "reward": -2.984690015204251,
+                "creation_time": 1726747160.5862715
+            },
+            {
+                "steps": 4499971,
+                "file_path": "results/test/AIRobotGeneric/AIRobotGeneric-4499971.nn",
+                "reward": 0.39909629002213476,
+                "creation_time": 1726748231.2748349
+            },
+            {
+                "steps": 4991549,
+                "file_path": "results/test/AIRobotGeneric/AIRobotGeneric-4991549.nn",
+                "reward": -5.78970335200429,
+                "creation_time": 1726749275.6274543
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 4991549,
+            "file_path": "results/test/AIRobotGeneric.nn",
+            "reward": -5.78970335200429,
+            "creation_time": 1726749275.6274543
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.1.0",
+        "mlagents_version": "0.19.0",
+        "tensorflow_version": "2.7.4"
+    }
+}
